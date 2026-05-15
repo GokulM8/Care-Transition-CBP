@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.env
+.venv/
+env/
+venv/
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Distribution / packaging
+.Python
+build/
+dist/
+.eggs/
+*.egg-info/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+
+# Streamlit and runtime
+.streamlit/
+
+# Data (do not commit raw data)
+data/raw/
+data/processed/
+
+# OS files
+Thumbs.db
+
+# Node
+node_modules/
+
+# Misc
+*.sqlite3
+

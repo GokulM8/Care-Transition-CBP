@@ -1,0 +1,179 @@
+
+<style>
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:1.5rem}
+.card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px}
+.card-label{font-size:12px;color:var(--color-text-secondary);margin:0 0 4px}
+.card-value{font-size:22px;font-weight:500;color:var(--color-text-primary);margin:0}
+.card-sub{font-size:11px;color:var(--color-text-tertiary);margin:4px 0 0}
+.section-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin:1.5rem 0 0.6rem;text-transform:uppercase;letter-spacing:.04em}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.5rem}
+.chart-wrap{position:relative}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px;font-size:12px;color:var(--color-text-secondary)}
+.legend span{display:flex;align-items:center;gap:5px}
+.leg-sq{width:10px;height:10px;border-radius:2px;display:inline-block}
+</style>
+
+<div class="cards">
+  <div class="card">
+    <p class="card-label">Total records</p>
+    <p class="card-value">720</p>
+    <p class="card-sub">After dropping 450 blank rows</p>
+  </div>
+  <div class="card">
+    <p class="card-label">Date range</p>
+    <p class="card-value">~3 yrs</p>
+    <p class="card-sub">Jan 2023 – Dec 2025</p>
+  </div>
+  <div class="card">
+    <p class="card-label">Missing values</p>
+    <p class="card-value">0</p>
+    <p class="card-sub">After cleaning blanks</p>
+  </div>
+  <div class="card">
+    <p class="card-label">Date gaps &gt;3 days</p>
+    <p class="card-value">29</p>
+    <p class="card-sub">Mostly weekends & holidays</p>
+  </div>
+</div>
+
+<div class="section-title">KPI snapshot — computed metrics</div>
+<div class="cards">
+  <div class="card">
+    <p class="card-label">Avg transfer efficiency</p>
+    <p class="card-value">0.69</p>
+    <p class="card-sub">Transfers ÷ CBP custody</p>
+  </div>
+  <div class="card">
+    <p class="card-label">Avg discharge effectiveness</p>
+    <p class="card-value">2.4%</p>
+    <p class="card-sub">Discharged ÷ HHS care</p>
+  </div>
+  <div class="card">
+    <p class="card-label">Peak HHS care load</p>
+    <p class="card-value">11,516</p>
+    <p class="card-sub">Dec 20, 2023</p>
+  </div>
+  <div class="card">
+    <p class="card-label">Current HHS care load</p>
+    <p class="card-value">2,484</p>
+    <p class="card-sub">Dec 21, 2025</p>
+  </div>
+</div>
+
+<div class="section-title">HHS care load over time (by year)</div>
+<div class="legend">
+  <span><span class="leg-sq" style="background:#534AB7"></span>2023</span>
+  <span><span class="leg-sq" style="background:#1D9E75"></span>2024</span>
+  <span><span class="leg-sq" style="background:#D85A30"></span>2025</span>
+</div>
+<div class="chart-wrap" style="height:220px;margin-bottom:1.5rem">
+  <canvas id="careChart"></canvas>
+</div>
+
+<div class="chart-row">
+  <div>
+    <div class="section-title">Yearly averages</div>
+    <div class="legend">
+      <span><span class="leg-sq" style="background:#534AB7"></span>Apprehended</span>
+      <span><span class="leg-sq" style="background:#1D9E75"></span>Discharged</span>
+    </div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="yearlyChart"></canvas>
+    </div>
+  </div>
+  <div>
+    <div class="section-title">Transfer efficiency by weekday</div>
+    <div class="legend">
+      <span><span class="leg-sq" style="background:#378ADD"></span>Efficiency ratio</span>
+    </div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="weekdayChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">Key findings</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+  <div style="background:var(--color-background-danger);border-radius:var(--border-radius-md);padding:12px 14px">
+    <p style="font-size:12px;font-weight:500;color:var(--color-text-danger);margin:0 0 4px">Peak backlog — Dec 2023</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0">HHS care load hit 11,516. Worst 5 backlog days all in late Dec 2023.</p>
+  </div>
+  <div style="background:var(--color-background-success);border-radius:var(--border-radius-md);padding:12px 14px">
+    <p style="font-size:12px;font-weight:500;color:var(--color-text-success);margin:0 0 4px">Sharp decline by 2025</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0">Avg apprehensions dropped from 148 (2024) to just 13/day in 2025.</p>
+  </div>
+  <div style="background:var(--color-background-warning);border-radius:var(--border-radius-md);padding:12px 14px">
+    <p style="font-size:12px;font-weight:500;color:var(--color-text-warning);margin:0 0 4px">Thursday best for transfers</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0">Avg transfer efficiency 0.73 on Thursdays vs 0.66 on Mondays.</p>
+  </div>
+  <div style="background:var(--color-background-info);border-radius:var(--border-radius-md);padding:12px 14px">
+    <p style="font-size:12px;font-weight:500;color:var(--color-text-info);margin:0 0 4px">Discharge effectiveness declining</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0">2025 avg discharge rate dropped to 1% vs 3% in 2023–24.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const gridColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+const textColor = isDark ? '#9c9a92' : '#73726c';
+
+new Chart(document.getElementById('careChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2023','2024','2025'],
+    datasets: [
+      {label:'Min',data:[5679,5664,1972],backgroundColor:'#AFA9EC'},
+      {label:'Mean',data:[8646,7043,2543],backgroundColor:'#534AB7'},
+      {label:'Max',data:[11516,10870,6405],backgroundColor:'#3C3489'}
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{color:textColor},grid:{color:gridColor}},
+      y:{ticks:{color:textColor,callback:v=>v.toLocaleString()},grid:{color:gridColor}}
+    }
+  }
+});
+
+new Chart(document.getElementById('yearlyChart'), {
+  type:'bar',
+  data:{
+    labels:['2023','2024','2025'],
+    datasets:[
+      {label:'Avg apprehended/day',data:[118,148,13],backgroundColor:'#534AB7'},
+      {label:'Avg discharged/day',data:[173,173,54],backgroundColor:'#1D9E75'}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{color:textColor},grid:{color:gridColor}},
+      y:{ticks:{color:textColor},grid:{color:gridColor}}
+    }
+  }
+});
+
+new Chart(document.getElementById('weekdayChart'), {
+  type:'bar',
+  data:{
+    labels:['Mon','Tue','Wed','Thu','Sun'],
+    datasets:[{
+      label:'Avg transfer efficiency',
+      data:[0.66,0.67,0.69,0.73,0.70],
+      backgroundColor:['#85B7EB','#85B7EB','#85B7EB','#378ADD','#85B7EB']
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{color:textColor},grid:{color:gridColor}},
+      y:{min:0.6,max:0.76,ticks:{color:textColor,callback:v=>v.toFixed(2)},grid:{color:gridColor}}
+    }
+  }
+});
+</script>
