@@ -1,4 +1,4 @@
-# Care Transitions CAP
+# Care Transitions CBP
 
 > Community-based Care Transitions Program — CMS Innovation Initiative
 
