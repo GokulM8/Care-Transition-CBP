@@ -1,16 +1,38 @@
+# Care Transition CBP Dashboard
+
+Streamlit dashboard for the UAC care pipeline analytics project.
+
+## Run locally
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+## Deploy on Streamlit Community Cloud
+
+1. Push this repository to GitHub.
+2. Create a new app in Streamlit Community Cloud.
+3. Set the main file path to `streamlit_app.py`.
+4. Deploy with the default settings.
+
+## Notes
+
+- The dashboard logic lives in `dashboard/app.py`.
+- The launcher at `streamlit_app.py` makes the app easier to deploy from the repo root.
+- App data is read from `data/processed/uac_engineered.csv`.
+
+---
+
 # Care Transitions CBP
 
 > Community-based Care Transitions Program — CMS Innovation Initiative
 
 ![Medicare](https://img.shields.io/badge/Medicare%20%2F%20Medicaid-blue) ![ACA Section 3026](https://img.shields.io/badge/ACA-Section%203026-green) ![High-Risk Beneficiaries](https://img.shields.io/badge/High--Risk-Beneficiaries-orange) ![CMS Initiative](https://img.shields.io/badge/CMS-Initiative-lightgrey)
 
----
-
 ## Overview
 
 The **Community-based Care Transitions Program (CCTP)**, authorized under **Section 3026 of the Affordable Care Act**, was a CMS Innovation initiative that tested community-driven models to improve patient handoffs from hospitals to post-acute settings and reduce preventable readmissions among high-risk Medicare beneficiaries. Launched in February 2012, it ran for five years with up to **$300 million** in total funding across **18 participating sites**.
-
----
 
 ## The Problem It Solved
 
@@ -23,16 +45,12 @@ The **Community-based Care Transitions Program (CCTP)**, authorized under **Sect
 
 Nearly one in five Medicare patients discharged from a hospital were readmitted within 30 days. Hospitals alone could not address all the factors driving readmissions — community-level coordination was missing.
 
----
-
 ## Program Goals
 
 - **Improve hospital-to-community transitions** — Ensure safe, coordinated handoffs when patients leave inpatient settings.
 - **Elevate quality of care** — Prevent medication errors, ensure follow-up visits, and catch early warning signs.
 - **Reduce avoidable readmissions** — Target high-risk beneficiaries with personalized community-based support.
 - **Document measurable savings** — Prove community-based models deliver real cost reductions to the Medicare program.
-
----
 
 ## How It Worked
 
@@ -47,8 +65,6 @@ Community-Based Organizations (CBOs) — or acute care hospitals partnered with 
 - Services spanning the full continuum of care
 
 > Priority was given to Administration on Aging (AoA) grantees serving medically underserved populations, small communities, and rural areas.
-
----
 
 ## The Care Transitions Intervention (CTI) Model
 
@@ -65,8 +81,6 @@ The dominant model was **Dr. Eric Coleman's CTI** — a 30-day structured coachi
 
 Structured visits and phone calls by the coach support safe transitions during the **critical first 30 days** at home following hospitalization.
 
----
-
 ## Key Outcomes
 
 - ✅ Readmission rates reduced by **20–50%** in CTI-certified organizations, with some reporting up to **72%** reduction.
@@ -74,8 +88,6 @@ Structured visits and phone calls by the coach support safe transitions during t
 - ✅ Improved **HEDIS** and **CMS Star ratings** for participating health systems.
 - ✅ Part of the **Partnership for Patients** initiative, aiming for a 20% reduction in hospital readmissions nationally.
 - ✅ Up to **$300 million** in funding distributed from 2011 through 2015.
-
----
 
 ## Related Programs
 
@@ -85,8 +97,6 @@ Structured visits and phone calls by the coach support safe transitions during t
 | **BOOST** | Better Outcomes for Older adults through Safe Transitions — one of six ADRC grantee models |
 | **No Wrong Door / LTSS System** | Bridges hospital discharge to community long-term services and support |
 | **Partnership for Patients** | Nationwide public-private initiative to cut preventable hospital errors by 40% and readmissions by 20% |
-
----
 
 ## Key Stakeholders
 
@@ -100,15 +110,11 @@ Structured visits and phone calls by the coach support safe transitions during t
 - Medicare beneficiaries and family caregivers
 - Administration for Community Living (ACL)
 
----
-
 ## References & Resources
 
 - [CMS CCTP Official Page](https://www.cms.gov/priorities/innovation/innovation-models/cctp)
 - [Care Transitions Intervention® — Coleman Model](https://caretransitions.health/)
 - [ACL Evidence-Based Care Transitions Program](https://acl.gov/programs/care-transitions/evidence-based-care-transitions-program)
 - [Medicaid — Improving Care Transitions](https://www.medicaid.gov/medicaid/quality-of-care/quality-improvement-initiatives/improving-care-transitions)
-
----
 
 *This document is intended as a reference overview of the CCTP program for educational and research purposes.*

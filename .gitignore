@@ -39,7 +39,9 @@ htmlcov/
 coverage.xml
 
 # Streamlit and runtime
-.streamlit/
+.streamlit/*
+!.streamlit/
+!.streamlit/config.toml
 
 # Data (do not commit raw data)
 data/raw/
