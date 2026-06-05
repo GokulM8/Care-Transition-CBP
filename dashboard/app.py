@@ -742,8 +742,24 @@ def resolve_sidebar_logo() -> Path | None:
 
 @st.cache_data
 def load_data():
-    data_path = Path(__file__).resolve().parent.parent / 'data' / 'processed' / 'uac_engineered.csv'
-    df = pd.read_csv(data_path)
+    # Prefer a local copy committed to the repo, but fall back to a hosted raw URL
+    local_path = Path(__file__).resolve().parent.parent / 'data' / 'processed' / 'uac_engineered.csv'
+    if local_path.exists():
+        df = pd.read_csv(local_path)
+    else:
+        data_url = (
+            'https://raw.githubusercontent.com/GokulM8/Care-Transition-CBP/main/data/processed/uac_engineered.csv'
+        )
+        try:
+            df = pd.read_csv(data_url)
+            st.info('Loaded data from remote fallback URL')
+        except Exception as err:
+            st.error(
+                f"Unable to find or load data file. Tried local path: {local_path} and fallback URL: {data_url}"
+            )
+            raise FileNotFoundError(
+                f"Data file not found locally ({local_path}) and failed to load from {data_url}: {err}"
+            )
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.sort_values('Date').reset_index(drop=True)
 
