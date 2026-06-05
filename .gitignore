@@ -45,7 +45,7 @@ coverage.xml
 
 # Data (do not commit raw data)
 data/raw/
-data/processed/
+# data/processed/   # previously ignored; now tracked for processed artifacts needed by the app
 
 # OS files
 Thumbs.db
